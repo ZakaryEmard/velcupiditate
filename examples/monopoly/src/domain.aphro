@@ -1,0 +1,73 @@
+# Bare bones monopoly game
+
+engine: sqlite
+db: monopoly
+
+Person as Node {
+  id: ID<Person>
+  token: string
+} & OutboundEdges {
+  playing: Edge<Player.ownerId>
+} & GraphQL {
+  read {
+    id
+  }
+  root
+}
+
+# Friends as Edge<Person, Person> {
+# } & Bidirectional
+
+Player as Node {
+  id: ID<Player>
+  piece: string
+  ownerId: ID<Person>
+  gameId: ID<Game>
+} & OutboundEdges {
+  properties: Edge<Property.ownerId>
+  playing: Edge<Player.gameId>
+  owner: Edge<Player.ownerId>
+} & GraphQL {
+  read {
+    id
+    piece
+    owner
+  }
+}
+
+Game as Node {
+  id: ID<Game>
+  name: string
+} & OutboundEdges {
+  players: Edge<Player.gameId>
+  board: Edge<Property.gameId>
+} & GraphQL {
+  read {
+    id
+    players
+    board
+  }
+}
+
+Property as Node {
+  id: ID<Property>
+  name: string
+  ownerId: ID<Player> | null
+  gameId: ID<Game>
+  cost: float32
+  mortgaged: bool
+  numHouses: int32
+  numHotels: int32
+} & OutboundEdges {
+  owner: Edge<Property.ownerId>
+} & GraphQL {
+  read {
+    id
+    name
+    owner
+    cost
+    mortgaged
+    numHouses
+    numHotels
+  }
+}

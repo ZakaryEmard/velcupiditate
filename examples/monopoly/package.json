@@ -1,0 +1,31 @@
+{
+  "name": "@aphro/monopoly",
+  "version": "1.2.8",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "aphro": "aphro gen ./src/domain.aphro --dest ./src/generated && cp src/generated/*.sql dist/generated && cp src/generated/*.graphql dist/generated",
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build -w",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --exit-child --respawn src/main.ts",
+    "start": "cross-env NODE_ENV=development node dist/main.js"
+  },
+  "dependencies": {
+    "@aphro/runtime-ts": "workspace:*",
+    "@databases/sqlite": "^4.0.1",
+    "@graphql-tools/schema": "^9.0.2",
+    "@graphql-yoga/node": "^2.13.11",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@aphro/codegen-cli": "workspace:*",
+    "@types/node": "^18.7.13",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.2"
+  }
+}

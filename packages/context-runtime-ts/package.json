@@ -1,0 +1,37 @@
+{
+  "name": "@aphro/context-runtime-ts",
+  "version": "0.3.6",
+  "main": "lib/index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tantaman/aphrodite.git",
+    "directory": "packages/context-runtime-ts"
+  },
+  "dependencies": {
+    "@aphro/cache-runtime-ts": "workspace:*",
+    "@aphro/schema-api": "workspace:*",
+    "@aphro/sql-ts": "workspace:*",
+    "@strut/events": "^0.0.10",
+    "@strut/sid": "^0.1.2",
+    "@strut/utils": "^0.1.1"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.0.1",
+    "@types/jest": "^28.1.8",
+    "jest": "^29.0.1",
+    "typescript": "^4.8.2"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build -w",
+    "test": "node --experimental-vm-modules --expose-gc ./node_modules/jest/bin/jest.js",
+    "deep-clean": "rm -rf ./lib || true && rm tsconfig.tsbuildinfo || true"
+  },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ]
+  }
+}

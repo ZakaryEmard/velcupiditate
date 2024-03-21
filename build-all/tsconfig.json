@@ -1,0 +1,31 @@
+{
+  "extends": "../tsconfig-templates/lib.json",
+  "compilerOptions": {
+    "outDir": "./lib/",
+    "rootDir": "./src"
+  },
+  "include": ["./src/"],
+  "references": [
+    { "path": "../connectors/absurd-sql-connector" },
+    { "path": "../connectors/sqljs-connector" },
+    { "path": "../connectors/sqlite3-connector" },
+    { "path": "../integration-tests/node" },
+    { "path": "../packages/codegen" },
+    { "path": "../packages/codegen-api" },
+    { "path": "../packages/codegen-cli" },
+    { "path": "../packages/codegen-sql" },
+    { "path": "../packages/codegen-ts" },
+    { "path": "../packages/grammar-extension-api" },
+    { "path": "../packages/runtime-ts" },
+    { "path": "../packages/react" },
+    { "path": "../packages/schema" },
+    { "path": "../packages/schema-api" },
+    { "path": "../packages/sql-ts" },
+    { "path": "../extensions/mutation-codegen" },
+    { "path": "../extensions/mutation-grammar" },
+    { "path": "../extensions/graphql-grammar" },
+    { "path": "../extensions/graphql-codegen" },
+    { "path": "../connectors/wa-sqlite-connector" },
+    { "path": "../packages/instrument" }
+  ]
+}
